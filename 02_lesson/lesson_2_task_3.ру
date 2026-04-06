@@ -1,0 +1,5 @@
+import site
+         
+def square(side):
+    site * side
+    return square
