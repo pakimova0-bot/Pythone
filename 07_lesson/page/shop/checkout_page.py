@@ -14,5 +14,6 @@ class CheckoutPage:
     def click_checkout(self):
         checkout_button = self.wait.until(
             EC.element_to_be_clickable((By.ID, "checkout")))
-        checkout_button.click()  
+        checkout_button.click()
+         
       

@@ -47,6 +47,7 @@ def test_form_submission_flow(driver):
     checkout_page.complete_order()
 
     assert checkout_page.get_total_cost_value () == 58.29
+    
         
     
     

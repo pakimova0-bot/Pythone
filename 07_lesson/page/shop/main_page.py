@@ -19,4 +19,5 @@ class MainPage:
         self.driver.find_element(By.ID, "Sauce Labs Bolt T-Shirt").send_keys() 
         self.driver.find_element(By.ID, "Sauce Labs Onesie").send_keys() 
 
-        self.driver.find_element(By.CLASS_NAME, "shopping_cart_link").cart_link.click()  
+        self.driver.find_element(By.CLASS_NAME, "shopping_cart_link").cart_link.click()
+        
