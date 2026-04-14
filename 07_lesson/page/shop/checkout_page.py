@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 class CheckoutPage:
-    def __input__(self, driver):
+    def __init__(self, driver):
         self._driver = driver
         self._driver.get("https://www.saucedemo.com")
         self.wait = WebDriverWait(driver, 20)
@@ -13,7 +13,7 @@ class CheckoutPage:
 
     def click_checkout(self):
         checkout_button = self.wait.until(
-            EC.element_to_be_clickable((By.ID, "checkout")))
+            EC.element_to_be_clickable((By.ID, "#checkout")))
         checkout_button.click()
          
       

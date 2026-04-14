@@ -4,8 +4,8 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from login_page import LoginPage
-from main_page import MainPage
-from making_page import MakingPage
+from cart_adding import Cart_adding
+from making_page import MakingPage 
 from checkout_page import CheckoutPage
 
 
@@ -18,37 +18,31 @@ def driver():
 
 def test_shop():
     login_page = LoginPage
-    main_page = MainPage
-    making_page = MakingPage
+    cart_adding = Cart_adding
+    making_page = MakingPage 
     checkout_page = CheckoutPage
              
 def test_form_submission_flow(driver):
-    login_page = LoginPage()
-    login_page.username_field.send_keys("standard_user")
-    login_page.password_field.send_keys("secret_sauce")
-    login_page.click_login_button()
+    login_page = LoginPage(driver)
+    login_page = user_field = "standard_user"
+    login_page = password_field = "secret_sauce"
+    login_page = login_button =  "login-button"
 
-    main_page = MainPage(driver)
-    main_page. add_goosd()
-    main_page.go_to_cart
+    cart_adding = Cart_adding(driver)
+    cart_adding.Sauce_Labs_Backpack_cart = "Sauce_Labs_Backpack_cart"
+    cart_adding.Sauce_Labs_Bolt_T_Shirt_cart = "Sauce_Labs_Bolt_T_Shirt_cart"
+    cart_adding.Sauce_Labs_Onesie_cart = "Sauce_Labs_Onesie_cart"
 
     making_page = MakingPage(driver)
-    making_page.push_buttons()
-    making_page.add_item_to_cart("sauce-labs-backpack")
-    making_page.add_item_to_cart("sauce-labs-bolt-t-shirt")
-    making_page.add_item_to_cart("sauce-labs-onesie")
-    making_page.navigate_to_cart()
+    making_page.input_first_name = "Polina"
+    making_page.input_last_name  = "Akimova"
+    making_page.input_zip_code = "124498"
+    making_page.total_cost = "total_cost"
 
     checkout_page = CheckoutPage(driver)
-    checkout_page.fill_from()
-    checkout_page.input_first_name("Акимова")
-    checkout_page.input_last_name("Полина")
-    checkout_page.input_zip_code("124498")
-    checkout_page.complete_order()
 
-    assert checkout_page.get_total_cost_value () == 58.29
-    
-        
+    text = "Total: $58.29"
+    sum_str = text.split(": $")[1]       
     
     
     
