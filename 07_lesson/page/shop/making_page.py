@@ -1,28 +1,23 @@
-import pytest
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+
 
 class MakingPage:
     def __init__(self, driver):
         self._driver = driver
-        self._driver.get("https://www.saucedemo.com")
-        self.wait = WebDriverWait(driver, 20)
-        self._driver.maximize_window()
+        
+    def input_first_name(self, first_name):
+        self._driver.find_element(By.ID, "first-name").send_keys(first_name)
 
-    def making (self):
-        self.driver_find_element(By.ID, "#first-name")
-        self.first_name = "Polina"
-        self.driver.find_element(By.ID, "#last-name")
-        self.last_name = "Akimova" 
-        self.driver.find_element(By.ID, "#postal-code")
-        self.zip_code ="124498"
-        self.driver.find_element(By.ID, "#continue").click()
+    def input_last_name(self, last_name):
+        self._driver.find_element(By.ID, "last-name").send_keys(last_name)
 
-        total_cost = self.driver.find_element(By.CLASS_NAME, "summary_total_label").text
-        total_cost_value = float(total_cost.split("$")[1])
+    def input_zip_code(self, zip_code):
+        self._driver.find_element(By.ID, "postal-code").send_keys(zip_code)
 
-        assert total_cost_value == 58.29
-        f"Итоговая сумма должна быть 58.29, но получена {total_cost_value}"
-       
+    def complete_order(self, complete_order):
+        self._driver.find_element(By.ID, "continue").click(complete_order)
+
+    def total(self, total):
+        self._driver.find_element(By.CLASS_NAME, "summary_total_label").text
+    text = "Total: $58.29"
+    sum_str = text.split(": $")[1]
