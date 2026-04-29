@@ -19,4 +19,6 @@ def test_calculator(driver):
     calc_page.open()
     calc_page.delay_fleld()
     calc_page.press_buttons()
-    calc_page.check_result()
+    calc_page.expectation()
+    result = calc_page.get_result()
+    assert result == "15"

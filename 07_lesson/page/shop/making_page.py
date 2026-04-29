@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class MakingPage:
     def __init__(self, driver):
         self._driver = driver
-        
+     
     def input_first_name(self, first_name):
         self._driver.find_element(By.ID, "first-name").send_keys(first_name)
 
@@ -17,7 +17,8 @@ class MakingPage:
     def complete_order(self, complete_order):
         self._driver.find_element(By.ID, "continue").click(complete_order)
 
-    def total(self, total):
-        self._driver.find_element(By.CLASS_NAME, "summary_total_label").text
-    text = "Total: $58.29"
-    sum_str = text.split(": $")[1]
+    def get_total_price(self):
+        self.driver.find_element(By.CLASS_NAME, "summary_total_label").text
+        text = "Total: $58.29"
+        sum_str = text.split(": $")[1]
+        sum_str = float(sum_str)
