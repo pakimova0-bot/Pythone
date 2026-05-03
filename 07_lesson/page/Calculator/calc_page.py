@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class CalculatorPage:
@@ -12,7 +13,7 @@ class CalculatorPage:
             "https://bonigarcia.dev/selenium-webdriver-"
             "java/slow-calculator.html")
 
-    def enter_delay(self, driver):
+    def enter_delay(self, element):
         element = self.driver.find_element(By.CSS_SELECTOR, "#delay")
         element.clear()
         element.send_keys("45")
@@ -23,7 +24,9 @@ class CalculatorPage:
         driver.find_element(By.XPATH, "//span[text() = '8']").click()
         driver.find_element(By.XPATH, "//span[text() = '=']").click()
 
-    def get_result(self, driver):
-        result = self.driver.find_element(By.CSS_SELECTOR, ".screen")
-        return result.text
-        assert result == "15"
+    def get_result(self, result):
+        result = WebDriverWait(self.driver, 46).until(
+            EC.text_to_be_present_in_element((
+                By.CSS_SELECTOR, ".screen"), "15"))
+
+        assert (result)
