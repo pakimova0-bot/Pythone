@@ -20,4 +20,4 @@ def test_calculator(driver):
     calc_page.enter_delay(driver)
     calc_page.click_button(driver)
     calc_page.get_result(driver)
-    calc_page.get_result(driver)
+    calc_page.get_result(15)

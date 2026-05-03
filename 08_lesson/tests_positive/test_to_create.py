@@ -2,17 +2,19 @@ import requests
 import json
 
 
-def test_to_create():
+def create_project():
     url = "https://ru.yougile.com/api-v2/projects"
 
     payload = json.dumps({
-        "title": "ГосУслуги"
-        })
+        "title": "ГосУслуги",
+        "users": {
+            "users": "admin"
+            }
+    })
     headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 3p3pq-'
-        'pzoQb03hAIbZ3zGBqHQtQkKeORQY4VWKTCPEnQ-wmyHkrZxpfiuYHeZbMr'
-        }
+        'Authorization': 'key'
+    }
 
     response = requests.request("POST", url, headers=headers, data=payload)
 

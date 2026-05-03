@@ -19,4 +19,5 @@ def test_form_submission_flow(driver):
     making_page.input_last_name("Akimova")
     making_page.input_zip_code("124498")
     making_page.complete_order()
-    assert making_page.get_counter()
+    as_is = making_page.get_counter()
+    assert as_is == 58.29
