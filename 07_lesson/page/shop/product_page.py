@@ -1,10 +1,13 @@
+from selenium.webdriver.common.by import By
+
+
 class ProductPage:
     def __init__(self, driver):
-        self._driver = driver
+        self.driver = driver
 
     def add_item_to_cart(self, item_name):
         selector = f'[data-test="add-to-cart-{item_name}"]'
-        self.wait_for_selector_and_click(selector)
+        self.driver.find_element(By.CSS_SELECTOR, selector).click()
 
     def open_cart(self):
-        self.wait_for_selector_and_click(self.SHOPPING_CART_LINK_SELECTOR)
+        self.driver.find_element(By.ID, "shopping_cart_container").click()

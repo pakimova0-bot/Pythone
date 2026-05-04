@@ -3,22 +3,26 @@ from selenium.webdriver.common.by import By
 
 class MakingPage:
     def __init__(self, driver):
-        self._driver = driver
-     
+        self.driver = driver
+
+    def click_checkout_button(self):
+        self.driver.find_element(
+            By.ID, "checkout").click()
+
     def input_first_name(self, first_name):
-        self._driver.find_element(By.ID, "first-name").send_keys(first_name)
+        self.driver.find_element(By.ID, "first-name").send_keys(first_name)
 
     def input_last_name(self, last_name):
-        self._driver.find_element(By.ID, "last-name").send_keys(last_name)
+        self.driver.find_element(By.ID, "last-name").send_keys(last_name)
 
     def input_zip_code(self, zip_code):
-        self._driver.find_element(By.ID, "postal-code").send_keys(zip_code)
+        self.driver.find_element(By.ID, "postal-code").send_keys(zip_code)
 
-    def complete_order(self, complete_order):
-        self._driver.find_element(By.ID, "continue").click(complete_order)
+    def complete_order(self):
+        self.driver.find_element(By.ID, "continue").click()
 
-    def get_total_price(self):
-        self.driver.find_element(By.CLASS_NAME, "summary_total_label").text
-        text = "Total: $58.29"
-        sum_str = text.split(": $")[1]
-        sum_str = float(sum_str)
+    def get_counter(self):
+        txt = self.driver.find_element(
+            By.CLASS_NAME, "summary_total_label").text
+        number_str = 58.29
+        return int(number_str)
