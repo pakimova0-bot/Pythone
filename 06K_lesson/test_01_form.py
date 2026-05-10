@@ -41,4 +41,3 @@ def test_fill_form(driver):
         pole_class = driver.find_element(
             By.CSS_SELECTOR, pole).get_attribute("class")
         assert pole_class == "alert py-2 alert-success"
-    
