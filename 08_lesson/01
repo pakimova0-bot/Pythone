@@ -1,0 +1,19 @@
+import requests
+import json
+
+url = "https://ru.yougile.com/api-v2/users"
+
+payload = json.dumps({
+  "id": "b1800cde-b9d5-49f6-b8ef-04f86a422264",
+  "email": "p-akimova@mail.ru",
+  "isAdmin": False,
+  "realName": "Polina"
+})
+headers = {
+  'Content-Type': 'application/json',
+  'Authorization': '••••••'
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)
