@@ -2,25 +2,24 @@ import requests
 
 headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 3p3pq-'
-        'pzoQb03hAIbZ3zGBqHQtQkKeORQY4VWKTCPEnQ-wmyHkrZxpfiuYHeZbMr'
+        'Authorization': 'Bearer'
         }
 base_url = "https://ru.yougile.com/api-v2/"
 
 
-def test_to_create():
+def test_to_create_invalid_url():
 
     payload = {
-        "title": "????"
+        "title": "ГосУслуги"
         }
 
-    response = requests.post(f"{base_url}projects",
+    response = requests.post(f"{base_url}upload-file",
                              headers=headers, json=payload)
 
     assert response.status_code == 201
 
 
-def test_to_change():
+def test_to_change_empty_request_body():
     old = "Новое"
     new = "измененное"
 
@@ -28,12 +27,12 @@ def test_to_change():
         "title": old
         }
 
-    response = requests.post(f"{base_url}project",
+    response = requests.post(f"{base_url}projects",
                              headers=headers, json=payload)
 
     assert response.status_code == 201
     response_bodi = response.json()
-    id = response_bodi["id"]
+    id = ["id"]
 # редактирование
     payload = {
         "title": new
@@ -45,8 +44,8 @@ def test_to_change():
     assert response.status_code == 200
 # получение по id
 
-    response = requests.get(f"{base_url}projects/{id}", headers=headers)
+    response = requests.delete(f"{base_url}projects/{id}", headers=headers)
 
-    assert response.status_code == 400
+    assert response.status_code == 200
     old = "Новое"
     new = "измененное"
