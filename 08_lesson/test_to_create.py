@@ -2,8 +2,7 @@ import requests
 
 headers = {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer 3p3pq-'
-        'pzoQb03hAIbZ3zGBqHQtQkKeORQY4VWKTCPEnQ-wmyHkrZxpfiuYHeZbMr'
+        'Authorization': 'Bearer'
         }
 base_url = "https://ru.yougile.com/api-v2/"
 
