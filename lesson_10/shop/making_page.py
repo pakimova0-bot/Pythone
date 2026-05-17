@@ -27,8 +27,7 @@ class MakingPage:
         self.driver.find_element(By.ID, "continue").click()
 
     def get_counter(self):
-        element = self.driver.find_element(
-            By.CLASS_NAME, "summary_total_label")
-        number_str = element.text
-        number_str = number_str.replace('Total', '$', '')
-        return float(number_str)
+        text = self.driver.find_element(
+            By.CSS_SELECTOR, "div.summary_total_label").text
+        text_ptise_value = float(text.split("$")[1])
+        return text_ptise_value
